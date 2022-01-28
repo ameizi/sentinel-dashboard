@@ -3,6 +3,18 @@ package com.alibaba.csp.sentinel.dashboard.rule.redis;
 public class RuleConsts {
 
     /**
+     * Gateway ApiDefinition
+     */
+    public static final String GATEWAY_API_DEFINITION = "gateway_sentinel_api_definition";
+    public static final String GATEWAY_API_DEFINITION_CHANNEL = "gateway_sentinel_api_definition_channel";
+
+    /**
+     * Gateway限流规则key前缀
+     */
+    public static final String GATEWAY_RULE_FLOW = "gateway_sentinel_rule_flow";
+    public static final String GATEWAY_RULE_FLOW_CHANNEL = "gateway_sentinel_rule_flow_channel";
+
+    /**
      * 限流规则key前缀
      */
     public static final String RULE_FLOW = "sentinel_rule_flow";
