@@ -15,20 +15,17 @@
  */
 package com.alibaba.csp.sentinel.dashboard.repository.metric;
 
+import com.alibaba.csp.sentinel.dashboard.datasource.entity.MetricEntity;
+import com.alibaba.csp.sentinel.util.StringUtil;
+import com.googlecode.concurrentlinkedhashmap.ConcurrentLinkedHashMap;
+import org.springframework.stereotype.Component;
+
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
-
-import com.alibaba.csp.sentinel.dashboard.datasource.entity.MetricEntity;
-import com.alibaba.csp.sentinel.util.StringUtil;
-
-import com.googlecode.concurrentlinkedhashmap.ConcurrentLinkedHashMap;
-import org.springframework.stereotype.Component;
 
 /**
  * Caches metrics data in a period of time in memory.
@@ -39,13 +36,13 @@ import org.springframework.stereotype.Component;
 @Component
 public class InMemoryMetricsRepository implements MetricsRepository<MetricEntity> {
 
-    private static final long MAX_METRIC_LIVE_TIME_MS = 1000 * 60 * 5;
+    // private static final long MAX_METRIC_LIVE_TIME_MS = 1000 * 60 * 5;
+    private static final long MAX_METRIC_LIVE_TIME_MS = 1000 * 60 * 30;
 
     /**
      * {@code app -> resource -> timestamp -> metric}
      */
     private Map<String, Map<String, ConcurrentLinkedHashMap<Long, MetricEntity>>> allMetrics = new ConcurrentHashMap<>();
-
 
 
     @Override
